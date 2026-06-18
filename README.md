@@ -34,7 +34,7 @@ To demonstrate the HTML and CSS concepts covered during the YouthCode programme 
 - Animations and transitions
 
 ## How to View
-Open index.html in a browser or visit the live site: [Insert GitHub Pages link]
+Open index.html in a browser or visit the live site: https://nonhlanhlakunene.github.io/my-portfolio/
 
 ## Challenges Faced
 One of my biggest challenges was deciding on the overall design direction 
