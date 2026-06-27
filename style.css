@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -17,12 +16,7 @@
   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.06);
   --border-light: rgba(217, 163, 143, 0.2);
   --accent-soft: rgba(217, 163, 143, 0.1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --bubble-color: rgba(217, 163, 143, 0.2);
 }
 
 body {
@@ -43,51 +37,52 @@ body {
   overflow-x: hidden;
 }
 
-/* Large Floating Blobs - These will be visible! */
-body::before {
-  content: "";
+/* --- FLOATING BUBBLES CONTAINER --- */
+.portfolio-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1; /* Sits behind text cards but above layout backgrounds */
+}
+
+/* Individual Bubble Positions */
+.bubble-1 {
   position: fixed;
   top: -200px;
   left: -200px;
   width: 500px;
   height: 500px;
-  background: rgba(217, 163, 143, 0.2);
+  background: var(--bubble-color);
   border-radius: 50%;
-  z-index: -1;
-  pointer-events: none;
+  transition: background 0.3s ease;
 }
 
-body::after {
-  content: "";
+.bubble-2 {
   position: fixed;
   bottom: -150px;
   right: -150px;
   width: 400px;
   height: 400px;
-  background: rgba(217, 163, 143, 0.15);
+  background: var(--bubble-color);
   border-radius: 50%;
-  z-index: -1;
-  pointer-events: none;
+  transition: background 0.3s ease;
 }
 
-/* Add a third blob for more depth */
-.blob-3 {
-  content: "";
+.bubble-3 {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: rgba(217, 163, 143, 0.05);
+  background: var(--bubble-color);
   border-radius: 50%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Apply the third blob */
-body .blob-3 {
-  display: block;
+  opacity: 0.4;
+  transition: background 0.3s ease;
 }
 
 section {
@@ -106,13 +101,13 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ede0d4; /* Match your new background color */
+  background-color: #ede0d4; 
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   animation: hideLoader 0.5s ease forwards;
-  animation-delay: 1.5s; /* Shorter delay so you see the background faster */
+  animation-delay: 1.5s; 
 }
 
 .loader-content {
@@ -224,6 +219,52 @@ section {
   width: 100%;
 }
 
+/* HIDE THE ACTUAL CHECKBOX ELEMENT */
+.theme-checkbox {
+  display: none !important;
+}
+
+/* THE FLOATING TOGGLE BUTTON */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  background: var(--card);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle-btn i {
+  position: absolute;
+  font-size: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn .moon-icon {
+  color: #f1c40f;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle-btn .sun-icon {
+  color: #e67e22;
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
 /* HERO SECTION */
 #home {
   min-height: 100vh;
@@ -257,8 +298,8 @@ section {
 }
 
 .hero-avatar {
-  width: 360px;
-  height: 370px;
+  width: 330px;
+  height: 320px;
   object-fit: cover;
   border-radius: 18px;
   border: 3px solid var(--accent);
@@ -299,6 +340,14 @@ section {
   margin: 0;
 }
 
+/* MAIN CONTAINERS */
+main, #home, footer {
+  background-color: var(--background);
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 2; 
+}
+
 /* SECTION CARD (shared) */
 .section-card {
   background: var(--card);
@@ -309,6 +358,7 @@ section {
   box-shadow: var(--shadow-lg);
   text-align: center;
   animation: slideUp 0.7s ease forwards;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes slideUp {
@@ -349,7 +399,6 @@ section {
   text-align: center;
 }
 
-
 .about-img {
   width: 35%;
   flex-shrink: 0;
@@ -359,14 +408,8 @@ section {
   width: 100%;
   height: auto;
   filter: grayscale(0.8);
+  transition: filter 0.3s ease;
 }
-
-.about-illustration {
-  width: 100%;
-  height: auto;
-}
-
-
 
 .about-text {
   flex: 1;
@@ -459,6 +502,9 @@ section {
 
 .project-screenshot img {
   width: 100%;
+  height: 220px; /* Enforces a uniform height across all cards */
+  object-fit: cover; /* Centers and crops the images so they don't look squished */
+  object-position: top center; /* Ensures the top header area of your site screenshots is visible */
   border-radius: 12px;
   margin-bottom: 8px;
   border: 1px solid var(--border-light);
@@ -492,7 +538,6 @@ section {
   gap: 16px;
   margin-top: 8px;
   justify-content: flex-start;
-  
 }
 
 .btn-project,
@@ -591,7 +636,6 @@ section {
   flex: 1;
 }
 
-/* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -644,6 +688,7 @@ section {
 .btn-primary {
   background-color: var(--accent);
   border: none;
+  width: 100%;
   color: white;
   font-weight: 500;
   transition: all 0.25s ease;
@@ -673,21 +718,59 @@ footer {
   margin: 0;
 }
 
-/* RESPONSIVE */
+/* --- LIGHT MODE RULES --- */
+
+/* WHEN CHECKBOX IS TICKED -> APPLY LIGHT MODE VALUES */
+.theme-checkbox:checked ~ * {
+  --background: #fdfbf7;
+  --card: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+  --border-light: rgba(224, 122, 95, 0.15);
+  --accent-soft: rgba(224, 122, 95, 0.08);
+  
+  /* Bright, vibrant orange/peach tint for light theme visibility */
+  --bubble-color: rgba(224, 122, 95, 0.12); 
+}
+
+/* Force layout blocks to draw from the updated light color variables */
+.theme-checkbox:checked ~ main,
+.theme-checkbox:checked ~ header,
+.theme-checkbox:checked ~ footer,
+.theme-checkbox:checked ~ #home {
+  background-color: var(--background) !important;
+}
+
+/* Specific UI adjustments for light theme readability */
+.theme-checkbox:checked ~ header .navbar {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.theme-checkbox:checked ~ .theme-toggle-btn {
+  background: #ffffff;
+}
+
+/* Rotate and switch the theme icons when checked */
+.theme-checkbox:checked ~ .theme-toggle-btn .moon-icon {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.theme-checkbox:checked ~ .theme-toggle-btn .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Ensure the about placeholder vector blends cleanly */
+.theme-checkbox:checked ~ main #about .about-img img {
+  filter: grayscale(0.2);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 768px) {
-  /* Navbar */
-  
-  .h1 {
-    font-size: 28px;
-  }
-  
-  .h2 {
-    font-size: 22px;
-  }
-  
-  p{
-    font-size: 14px;
-  }
+  .h1 { font-size: 28px; }
+  .h2 { font-size: 22px; }
+  p { font-size: 14px; }
   
   .navbar {
     flex-wrap: wrap;
@@ -696,78 +779,24 @@ footer {
     top: 10px;
     justify-content: center;
     padding: 16px 20px;
-    background-color:rgba(30, 30, 30, 0.98);
+    background-color: rgba(30, 30, 30, 0.98);
   }
   
-  .navbar .nav-links {
-    display: none;
-  }
-  
-  /* Hero */
-  .name {
-    font-size: 34px;
-  }
-  
-  .hero-card {
-    padding: 36px 24px;
-  }
-  
-  .hero-avatar {
-    width: 250px;
-    height: 270px;
-  }
-  
-  /* About */
-  .about-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  /* Projects */
-  .projects-grid {
-    flex-direction: column;
-  }
-  
-  .project-links {
-    justify-content: center;
-  }
-  
-  /* Contact */
-  .contact-wrapper {
-    flex-direction: column;
-    gap: 24px;
-  }
-  
-  
-  .contact-right {
-    width: 100%;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-  }
-  
-  .btn-primary {
-    width: 100%;
-  }
-  .contact-links {
-    justify-content: center;
-  }
-  
-  section {
-    padding: 40px 16px;
-  }
-  
-  /* Section Cards */
-  .section-card {
-    padding: 24px 16px;
-    border-radius: 16px;
-  }
-  
-  .skills-grid {
-    gap: 8px;
-  }
+  .navbar .nav-links { display: none; }
+  .name { font-size: 34px; }
+  .hero-card { padding: 36px 24px; }
+  .hero-avatar { width: 250px; height: 270px; }
+  .about-wrapper { flex-direction: column; text-align: center; }
+  .projects-grid { flex-direction: column; }
+  .project-links { justify-content: center; }
+  .contact-wrapper { flex-direction: column; gap: 24px; }
+  .contact-right { width: 100%; }
+  .form-group input, .form-group textarea { width: 100%; }
+  .btn-primary { width: 100%; }
+  .contact-links { justify-content: center; }
+  section { padding: 40px 16px; }
+  .section-card { padding: 24px 16px; border-radius: 16px; }
+  .skills-grid { gap: 8px; }
   
   .skill {  
     padding: 10px 12px;
@@ -775,38 +804,15 @@ footer {
     min-width: 65px;
   }
   
-  .skill i {
-    font-size: 24px;
-  }
-  
-  /* Project cards */
-  .project-card {
-    padding: 16px;
-  }
+  .skill i { font-size: 24px; }
+  .project-card { padding: 16px; }
 }
 
 @media (max-width: 1024px) {
-  .navbar {
-    width: 90%;
-  }
-
-  .skills-grid {
-    gap: 10px;
-  }
-
-  .skill {
-    padding: 12px 14px;
-  }
-
-  .projects-grid {
-    flex-wrap: wrap;
-  }
-
-  .project-card {
-    min-width: 45%;
-  }
-
-  .about-wrapper {
-    gap: 20px;
-  }
+  .navbar { width: 90%; }
+  .skills-grid { gap: 10px; }
+  .skill { padding: 12px 14px; }
+  .projects-grid { flex-wrap: wrap; }
+  .project-card { min-width: 45%; }
+  .about-wrapper { gap: 20px; }
 }

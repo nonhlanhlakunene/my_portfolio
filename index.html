@@ -26,12 +26,21 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- THE SWITCH: Must be at the very top of body so CSS can target everything below it -->
+    <input type="checkbox" id="theme-toggle" class="theme-checkbox" />
+    <label for="theme-toggle" class="theme-toggle-btn">
+      <i class="fa-solid fa-moon moon-icon"></i>
+      <i class="fa-solid fa-sun sun-icon"></i>
+    </label>
+
     <div class="blob-3"></div>
+
     <div id="loader">
       <div class="loader-content">
         <div class="dots"><span></span> <span></span> <span></span></div>
       </div>
     </div>
+
     <header>
       <nav class="navbar">
         <div class="logo">NK</div>
@@ -44,6 +53,7 @@
         </ul>
       </nav>
     </header>
+
     <main>
       <!-- HOME -->
       <section id="home">
@@ -60,11 +70,15 @@
           </div>
         </div>
       </section>
+
       <!-- ABOUT -->
       <section id="about">
         <div class="container section-card about-wrapper">
           <div class="about-img">
-            <img src = "images/undraw_programming_j1zw.svg">
+            <img
+              src="./images/undraw_programming_j1zw.svg"
+              alt="Programming illustration"
+            />
           </div>
           <div class="about-text">
             <h2>About Me</h2>
@@ -77,8 +91,8 @@
             </p>
             <p>
               I work with HTML, CSS and JavaScript, and I am currently building
-              a weather application as part of my SheCodes Foundation training.
-              Every project teaches me something I did not expect.
+              web applications as part of my SheCodes Foundation training. Every
+              project teaches me something I did not expect.
             </p>
             <p>
               In two years I want to be working at a tech company, freelancing,
@@ -89,6 +103,7 @@
           </div>
         </div>
       </section>
+
       <!-- SKILLS -->
       <section id="skills">
         <div class="container section-card">
@@ -120,6 +135,7 @@
           </div>
         </div>
       </section>
+
       <!-- PROJECTS -->
       <section id="projects">
         <div class="container section-card">
@@ -127,63 +143,102 @@
           <div class="accent-line"></div>
           <p>Here are some projects I've worked on during my training:</p>
           <div class="projects-grid">
+            <!-- PROJECT 1: GEARTRAIL -->
             <div class="project-card">
               <div class="project-screenshot">
                 <img
-                  src="https://placehold.co/400x220/f7efe8/b87355?text=Weather+App"
-                  alt="Weather App screenshot"
+                  src="./images/Screenshot 2026-06-25 112547.jpg"
+                  alt="GearTrail Landing Page"
                 />
               </div>
-              <div class="project-tech">HTML · CSS · JavaScript</div>
-              <h3>Weather App</h3>
+              <div class="project-tech">HTML · CSS</div>
+              <h3>GearTrail</h3>
               <p>
-                A live weather application built with HTML, CSS & JavaScript
-                using the OpenWeatherMap API.
+                A premium landing page built for an outdoor exploration brand
+                featuring a high-impact hero section, clean typography, and
+                seamless layout design.
               </p>
               <div class="project-links">
-                <a href="#" target="_blank" class="btn-project">View Project</a>
-                <a href="#" target="_blank" class="btn-docs">View Docs</a>
+                <a
+                  href="https://nonhlanhlakunene.github.io/the-gear-trail/"
+                  target="_blank"
+                  class="btn-project"
+                  >View Project</a
+                >
+                <a
+                  href="https://github.com/nonhlanhlakunene/the-gear-trail"
+                  target="_blank"
+                  class="btn-docs"
+                  >View Docs</a
+                >
               </div>
             </div>
+
+            <!-- PROJECT 2: THE FLOW GALLERY -->
             <div class="project-card">
               <div class="project-screenshot">
                 <img
-                  src="https://placehold.co/400x220/f7efe8/b87355?text=Quiz+App"
-                  alt="Quiz App screenshot"
+                  src="./images/Screenshot 2026-06-25 112605.jpg"
+                  alt="The Flow Gallery Website"
                 />
               </div>
-              <div class="project-tech">HTML · CSS · JavaScript</div>
-              <h3>Quiz App</h3>
+              <div class="project-tech">HTML · CSS · Grid</div>
+              <h3>The Flow Gallery</h3>
               <p>
-                An interactive quiz application built with JavaScript featuring
-                score tracking and dynamic questions.
+                An elegant, interactive media portfolio gallery styled with
+                structural CSS filters, responsive card modules, and smooth
+                visual hover layers.
               </p>
               <div class="project-links">
-                <a href="#" target="_blank" class="btn-project">View Project</a>
-                <a href="#" target="_blank" class="btn-docs">View Docs</a>
+                <a
+                  href="https://nonhlanhlakunene.github.io/the-flow-gallery/"
+                  target="_blank"
+                  class="btn-project"
+                  >View Project</a
+                >
+                <a
+                  href="https://github.com/nonhlanhlakunene/the-flow-gallery"
+                  target="_blank"
+                  class="btn-docs"
+                  >View Docs</a
+                >
               </div>
             </div>
+
+            <!-- PROJECT 3: SCENTED CO. -->
             <div class="project-card">
               <div class="project-screenshot">
                 <img
-                  src="https://placehold.co/400x220/f7efe8/b87355?text=Tip+Calculator"
-                  alt="Tip Calculator screenshot"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/180/563/original/Screenshot_2026-06-19_125922.png?1781866770"
+                  alt="Image of the Scented Co website"
                 />
               </div>
-              <div class="project-tech">HTML · CSS · JavaScript</div>
-              <h3>Tip Calculator</h3>
+              <div class="project-tech">HTML · Bootstrap</div>
+              <h3>Scented Co.</h3>
               <p>
-                A simple and practical tip calculator that computes bill splits
-                and tip amounts using JavaScript.
+                A multi-page candle store built using Bootstrap. Features a
+                product grid, image carousel, contact form and smooth scroll
+                animations — styled entirely with Bootstrap, no external CSS.
               </p>
               <div class="project-links">
-                <a href="#" target="_blank" class="btn-project">View Project</a>
-                <a href="#" target="_blank" class="btn-docs">View Docs</a>
+                <a
+                  href="https://nonhlanhlakunene.github.io/lca-html-css-exercises/"
+                  target="_blank"
+                  class="btn-project"
+                  >View Project</a
+                >
+                <a
+                  href="https://github.com/nonhlanhlakunene/lca-html-css-exercises/tree/week2-html-css-ex-04"
+                  target="_blank"
+                  class="btn-docs"
+                  >View Docs</a
+                >
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- CONTACT -->
       <section id="contact">
         <div class="container section-card">
@@ -192,7 +247,8 @@
               <h2>Let's Get in Touch</h2>
               <div class="accent-line"></div>
               <p>
-                I am always open to new opportunities and collaborations. Feel free to reach out.
+                I am always open to new opportunities and collaborations. Feel
+                free to reach out.
               </p>
               <div class="contact-details">
                 <p>
@@ -217,19 +273,36 @@
               </div>
             </div>
             <div class="contact-right">
-              <form action="https://formspree.io/f/mlgkkjgn" method="POST" class="contact-form">
+              <form action="https://api.web3forms.com/submit" method="POST">
                 <div class="form-group">
-                  <label >Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your full name" />
+                  <label>Name</label>
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="4709d36b-cbc5-4448-8141-407cb7407fed"
+                  />
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Your full name"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="email" name="email" id="email" placeholder="your@email.com" />
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="your@email.com"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label>Subject</label>
                   <input
-                    type="subject"
+                    type="text"
                     id="subject"
                     placeholder="What is this about?"
                   />
@@ -242,6 +315,7 @@
                     rows="5"
                     placeholder="Write your message here..."
                   ></textarea>
+                  <br/>
                 </div>
                 <button type="submit" class="btn btn-primary">
                   Send Message
@@ -252,6 +326,7 @@
         </div>
       </section>
     </main>
+
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
@@ -260,6 +335,7 @@
         </p>
       </div>
     </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
